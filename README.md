@@ -13,7 +13,7 @@ This is web API serving covid-19 information using Node JS. Covid-19 sources inf
 ## Docs
 - API Documentation see [https://kevinyuslianto.docs.apiary.io/#](https://kevinyuslianto.docs.apiary.io/#) or
 [API Documentation](https://github.com/kaye5/Covid19-RestAPI-Information/blob/master/docs/API%20Documentation.apib)
-- [Architecture Documentation](https://github.com/kaye5/Covid19-RestAPI-Information/blob/master/docs/Covid-19%20Information%20API%20Documentation)
+- [Architecture Documentation](https://github.com/kaye5/Covid19-RestAPI-Information/blob/master/docs/Covid-19%20Information%20API%20Documentation.pdf)
 
 ## Requirement
 The system requirement for running this project:

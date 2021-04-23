@@ -2,7 +2,11 @@
  * @description error handler middleware
  */
 const errHandler = (err, req, res, next) => {
-  console.log(err);
+  if (err.response) {
+    console.log(err.response.data, err.response.status);
+    return res.sendStatus(err.response.status);
+  }
+  console.log(err.message);
   res.status(500).send('something went wrong.');
   return next();
 };

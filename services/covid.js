@@ -1,5 +1,4 @@
 const _ = require('lodash');
-const qs = require('querystring');
 const ErrorCode = require('../error');
 const covidAPI = require('../modules/covidAPI');
 const { calculatePercantage, isCountryCodeAvailable } = require('./utils');
@@ -48,6 +47,8 @@ exports.getCovidCountrySummary = async (ISO2 = '') => {
     NewRecovered,
     TotalConfirmed,
   };
+  // Sanitize data
+  delete result.ID
   return result;
 };
 

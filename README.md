@@ -1,7 +1,7 @@
 # Covid-19 Rest API information
 
 ## Overview
-This is web API serving covid-19 information using Node JS. covid-19 information gathered from :
+This is web API serving covid-19 information using Node JS. Covid-19 sources information gathered from :
 - [https://covid19api.com/](https://covid19api.com/)
 - [https://newsapi.org/](https://newsapi.org/)
 
@@ -11,8 +11,9 @@ This is web API serving covid-19 information using Node JS. covid-19 information
 - News : Top headline news about covid-19
 
 ## Docs
-API Documentation see [https://kevinyuslianto.docs.apiary.io/#](https://kevinyuslianto.docs.apiary.io/#) or 
+- API Documentation see [https://kevinyuslianto.docs.apiary.io/#](https://kevinyuslianto.docs.apiary.io/#) or
 [API Documentation](https://github.com/kaye5/Covid19-RestAPI-Information/blob/master/docs/API%20Documentation.apib)
+- [Architecture Documentation](https://github.com/kaye5/Covid19-RestAPI-Information/blob/master/docs/Covid-19%20Information%20API%20Documentation)
 
 ## Requirement
 The system requirement for running this project:
@@ -38,6 +39,9 @@ The system requirement for running this project:
   - OR
   - if computer installed with nodemon ``` yarn start ```
 - (optional) ```npm i -g nodemon ```
+
+## Aditional Information
+- For getting access key use /login endpoint with request body ```{"user" : "anything"}``` since there's no active authentication here.
 
 ## Dependencies
 - [Express](https://github.com/expressjs/express)

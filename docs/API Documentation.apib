@@ -10,7 +10,9 @@ RESTAPI of Covid-19 information such as :
 
 # Group Authentication
 Create new access key that will be used to access resouce from API.
-Token can be get from ```/login``` endpoint. Which the token will be send to server for validation as bearer token on Authorization header
+Token can be get from ```/login``` endpoint. Which the token will be send to server for validation as bearer token on Authorization header.
+
+**You can pass empty body request for InvalidCredentials 401 error response.**
 
 ```Authorization : Bearer {token}```
 ## Login  [POST /login]

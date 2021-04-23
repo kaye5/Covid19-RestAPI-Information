@@ -1,0 +1,327 @@
+FORMAT: 1A
+HOST: https://polls.apiblueprint.org/
+
+# Covid Information RESTAPI - Kevin Yuslianto
+
+RESTAPI of Covid-19 information such as :
+- Data : Latest data about covid
+- News : Latest news about covid
+
+
+# Group Authentication
+Create new access key that will be used to access resouce from API.
+Token can be get from ```/login``` endpoint. Which the token will be send to server for validation as bearer token on Authorization header
+
+```Authorization : Bearer {token}```
+## Login  [POST /login]
++ Request
+
+    + Attributes
+        + user (string,required) - User credentials
+
+    + Body
+
+            {
+                "user" : "john"
+            }
+
++ Response 200 (text/html)
+
+    #### Success body response
+    + Body
+
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoia2V2aW55dXN5dXNAZ21haWwuY29tIiwiaWF0IjoxNjE5MTQ0NTU2fQ.WdolNpn_5mlPFvp6uKgIsGU-LiPjh2tfMkm4BbiKYAE
+
+
+# Group Covid Data
+    List endpoint of Covid Data.
+
+
+## Covid-19 World Data Summaries [GET /covid/summaries]
+    Summay of new and total cases from all over the world
+
++ Request
+
+    + Attributes (Auth)
+
+    + Headers
+
+            Authorization: Bearer {token}
+
++ Response 200 (application/json)
+
+    #### Success body response
+    + Body
+
+            {
+                "NewConfirmed": 563034,
+                "TotalConfirmed": 142747257,
+                "NewDeaths": 9444,
+                "TotalDeaths": 3041677,
+                "NewRecovered": 359855,
+                "TotalRecovered": 81885998,
+                "Date": "2021-04-21T17:18:41.981Z"
+            }
+
+    + Attributes (object)
+        + Country (string) - Country name
+        + CountryCode (string) - Country ISO2 Code
+        + Slug (string) - Country slug id
+        + NewConfirmed (number) - New covid-19 cases
+        + TotalConfirmed (number) - Total confirmed covid-19 cases
+        + NewDeaths (number) - New covid-19 death cases
+        + TotalDeaths (number) - Total of confirmed covid-19 death
+        + NewRecovered (number) - New covid-19 recovered cases
+        + TotalRecovered (number) - Total of confirmed covid-19 recovered cases
+        + Date (string) - Last update time
+
+
+## Covid-19 Country Specific Summaries [GET /covid/summaries/{country_code}]
+    Summay of new and total cases from country specific
+
++ Parameters
+    + country_code (string,optional) - ISO2 country code (ex: ID,MY,TH)
+
++ Request
+
+    + Attributes (Auth)
+
+    + Headers
+
+            Authorization: Bearer {token}
+
++ Response 200 (application/json)
+
+    #### Success body response
+    + Body
+
+            {
+                "ID": "767e69fd-2194-40a7-b140-5559816a58f9",
+                "Country": "Indonesia",
+                "CountryCode": "ID",
+                "Slug": "indonesia",
+                "NewConfirmed": 0,
+                "TotalConfirmed": 1614849,
+                "NewDeaths": 0,
+                "TotalDeaths": 43777,
+                "NewRecovered": 0,
+                "TotalRecovered": 1468142,
+                "Date": "2021-04-21T17:18:41.981Z",
+                "Premium": {},
+                "percentageComparison": {
+                    "NewConfirmed": 0,
+                    "NewDeaths": 0,
+                    "TotalRecovered": 1.79,
+                    "TotalDeaths": 1.44,
+                    "NewRecovered": 0,
+                    "TotalConfirmed": 1.13
+                }
+            }
+
+    + Attributes (object)
+        + Country (string) - Country name
+        + CountryCode (string) - Country ISO2 Code
+        + Slug (string) - Country slug id
+        + NewConfirmed (number) - new covid-19 cases
+        + TotalConfirmed (number) - total confirmed covid-19 cases
+        + NewDeaths (number) - new covid-19 death cases
+        + TotalDeaths (number) - total of confirmed covid-19 death
+        + NewRecovered (number) - new covid-19 recovered cases
+        + TotalRecovered (number) - total of confirmed covid-19 recovered cases
+        + Date (string) = last update time
+        + percentageComparison (object) - comparison of current country with overall world data in percentage
+            + NewConfirmed (number) - comparison new covid-19 cases
+            + TotalConfirmed (number) - comparison total confirmed covid-19 cases
+            + NewDeaths (number) - comparison new covid-19 death cases
+            + TotalDeaths (number) - comparison total of confirmed covid-19 death
+            + NewRecovered (number) - comparison new covid-19 recovered cases
+            + TotalRecovered (number) - comparison total of confirmed covid-19 recovered cases
+
+
+## Covid Country Specific Histories [GET /covid/histories/{slug}]
+    Return list of covid data with country specific from day one until now
+
++ Parameters
+    + slug (string) - Country slug id (get slug from /countries) ex: (indonesia,french-guiana)
+
++ Response 200 (application/json)
+
+    + Body
+
+            [
+                {
+                    "Confirmed": 1,
+                    "Deaths": 0,
+                    "Recovered": 0,
+                    "Active": 1,
+                    "Date": "2020-01-22T00:00:00Z"
+                }
+            ]
+
+    + Attributes (array[History],fixed-type)
+
+
+
+## Covid News [/news]
+    Endpoint latest covid news around the world.
+### Covid Top News [GET /news{?page}{?country}]
+    Return list of top headline about covid artciles and total articles with 10 articles each pages
+
++ Request
+
+    + Attributes (Auth)
+
+    + Headers
+
+            Authorization: Bearer {token}
+
++ Parameters
+    + page (string,optional) - Pagination
+        + Default : `1`
+    + country (string,optional) - ISO2 country code (ex: ID,MY,TH)
+
++ Response 200 (application/json)
+
+    #### Success body response
+    + Body
+
+            {
+                "articles": [
+                    {
+                        "source": {
+                            "id": null,
+                            "name": "Kontan.co.id"
+                        },
+                        "author": "kompas.com",
+                        "title": "Ini cara paling mudah untuk melindungi diri dari Covid-19, penasaran? - Kontan",
+                        "description": "Agar tubuh tidak mudah terserang penyakit kronis, kita dapat melakukan satu kegiatan ini. Olahraga.",
+                        "url": "https://kesehatan.kontan.co.id/news/ini-cara-paling-mudah-untuk-melindungi-diri-dari-covid-19-penasaran",
+                        "urlToImage": "https://foto.kontan.co.id/NXF66qAw8nYJj3aKD9Kz8t9TeEA=/smart/2020/12/17/1876560443p.jpg",
+                        "publishedAt": "2021-04-22T02:24:48Z",
+                        "content": "KONTAN.CO.ID - JAKARTA. Agar tubuh tidak mudah terserang penyakit kronis, kita dapat melakukan satu kegiatan ini. Olahraga.  \r\nMalah penelitian baru menunjukkan, menjadi aktif secara fisik dapat meng… [+1720 chars]"
+                    }
+                ],
+                "totalResults": 3
+            }
+
+    + Attributes (object)
+        + articles (array[Article],fixed-type) - List array of news article
+        + totalResults (number) - Number of total articles
+
+# Group Countries
+
+## List Countries [GET /countries{?code}]
+Return list of available country data or return single data if country code is provided
++ Request
+
+    + Attributes (Auth)
+
+    + Headers
+
+            Authorization: Bearer {token}
+
+    + Parameters
+        + code (string,optional) - ISO2 country code (ex: ID,MY,TH)
+
++ Response 200 (application/json)
+
+    #### Success body response
+    + Body
+
+            [
+                {
+                    "Country": "Mali",
+                    "Slug": "mali",
+                    "ISO2": "ML"
+                }
+            ]
+
+    + Attributes (array[CountryData],fixed-type)
+
+
+# Group Error Message
+List of error response and message.
+
+## ISO2NotFound
+Error response when ISO2 country code is not valid.
++ Response <span style="color : green">**200**</span> (application/json)
+  ```
+  {
+      "message": "country code not found",
+      "code": "ISO2NotFound",
+      "type": "error"
+  }
+  ```
+## InvalidAccessKey
+Error response when provided access key on headers not valid
++ Response <span style="color : red">**400**</span> (application/json)
+
+  ```
+  {
+        "message": "invalid access key",
+        "code": "InvalidAccessKey",
+        "type": "error"
+  }
+  ```
+## InvalidCredentials
+Error response when credentials provided on login not match
++ Response <span style="color : green">**200**</span> (application/json)
+
+    ```
+    {
+      "message": "credentials provided not match",
+      "code": "InvalidCredentials",
+      "type": "error",
+    }
+    ```
+## **Attributes**
+```js
+  {
+    message : {
+        type : "string",
+        "description": "message or description error response"
+    },
+    code : {
+        type : "string",
+        description: "Error code",
+    },
+    type : {
+        type: "string"
+        description: "Response type enum [error,warn,info]"
+    }
+  }
+```
+
+## Data Structures
+
+### ErrorObject (object)
++ message (string) - Error message
++ code (string) - Error code
++ type (string) - Error type
+
+### History (object)
++ Confirmed (number) - Total confirmed case by the date
++ Deaths (number) - Total death by the date
++ Recovered (number) - Total recovered by the date
++ Active (number) - Total active case by the date
++ Date (string) - Date of the history
+
+### Auth (object)
++  token (string) - Bearer token auth (get from /login endpoint)
+
+### CountryData(object)
++ Country (string) - Country name
++ Slug (string) - Country unique id for search
++ ISO2 (string) - ISO2 country code
+
+### Article (object)
+
++ source (object) - News article source
+    + name (string) - Name of the article source
++ author (string) - Article writer
++ title (string) - Article title / headline
++ description (string) - Brief description about the news article
++ url (string) - Url to news article
++ urlToImage (string) - News main cover
++ publishedAt (string) - Date publish
++ content (string) - The content of news article

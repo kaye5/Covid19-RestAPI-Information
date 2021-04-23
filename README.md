@@ -5,11 +5,13 @@ This is web API serving covid-19 information using Node JS. covid-19 information
 - [https://covid19api.com/](https://covid19api.com/)
 - [https://newsapi.org/](https://newsapi.org/)
 
-
 ## Features
 - Summary - Total and new cases of covid-19
 - History - Covid-19 history from day one outbreak
 - News : Top headline news about covid-19
+
+## Docs
+API Documentation see [https://kevinyuslianto.docs.apiary.io/#](https://kevinyuslianto.docs.apiary.io/#)
 
 ## Requirement
 The system requirement for running this project:
@@ -17,7 +19,12 @@ The system requirement for running this project:
 - npm / yarn
 
 ## Running this project locally
-### Using npm :
+1. ### Prepare .env
+- Create .env file using .env.example as a template
+  - PORT : server running port
+  - JWT_KEY : JWT secret key
+  - NEWSAPI_KEY : NewsAPI provider api key
+2. ### Using npm :
 - Clone this repo
 - Install dependencies with console
   - Using npm ```npm install```

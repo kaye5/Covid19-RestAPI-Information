@@ -11,7 +11,8 @@ This is web API serving covid-19 information using Node JS. covid-19 information
 - News : Top headline news about covid-19
 
 ## Docs
-API Documentation see [https://kevinyuslianto.docs.apiary.io/#](https://kevinyuslianto.docs.apiary.io/#)
+API Documentation see [https://kevinyuslianto.docs.apiary.io/#](https://kevinyuslianto.docs.apiary.io/#) or 
+[API Documentation](https://github.com/kaye5/Covid19-RestAPI-Information/blob/master/docs/API%20Documentation.apib)
 
 ## Requirement
 The system requirement for running this project:

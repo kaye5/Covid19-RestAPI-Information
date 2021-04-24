@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: https://polls.apiblueprint.org/
+HOST: http://localhost:3000
 
 # Covid Information RESTAPI - Kevin Yuslianto
 
@@ -15,7 +15,7 @@ Token can be get from ```/login``` endpoint. Which the token will be send to ser
 **You can pass empty body request for InvalidCredentials 401 error response.**
 
 ```Authorization : Bearer {token}```
-## Login  [POST /login]
+## Login  [POST /api/login]
 + Request
 
     + Attributes
@@ -39,7 +39,7 @@ Token can be get from ```/login``` endpoint. Which the token will be send to ser
     List endpoint of Covid Data.
 
 
-## Covid-19 World Data Summaries [GET /covid/summaries]
+## Covid-19 World Data Summaries [GET /api/covid/summaries]
     Summay of new and total cases from all over the world
 
 + Request
@@ -78,7 +78,7 @@ Token can be get from ```/login``` endpoint. Which the token will be send to ser
         + Date (string) - Last update time
 
 
-## Covid-19 Country Specific Summaries [GET /covid/summaries/{country_code}]
+## Covid-19 Country Specific Summaries [GET /api/covid/summaries/{country_code}]
     Summay of new and total cases from country specific
 
 + Parameters
@@ -140,7 +140,7 @@ Token can be get from ```/login``` endpoint. Which the token will be send to ser
             + TotalRecovered (number) - comparison total of confirmed covid-19 recovered cases
 
 
-## Covid Country Specific Histories [GET /covid/histories/{slug}]
+## Covid Country Specific Histories [GET /api/covid/histories/{slug}]
     Return list of covid data with country specific from day one until now
 
 + Parameters
@@ -164,9 +164,9 @@ Token can be get from ```/login``` endpoint. Which the token will be send to ser
 
 
 
-## Covid News [/news]
+## Covid News [/api/news]
     Endpoint latest covid news around the world.
-### Covid Top News [GET /news{?page}{?country}]
+### Covid Top News [GET /api/news{?page}{?country}]
     Return list of top headline about covid artciles and total articles with 10 articles each pages
 
 + Request
@@ -212,7 +212,7 @@ Token can be get from ```/login``` endpoint. Which the token will be send to ser
 
 # Group Countries
 
-## List Countries [GET /countries{?code}]
+## List Countries [GET /api/countries{?code}]
 Return list of available country data or return single data if country code is provided
 + Request
 

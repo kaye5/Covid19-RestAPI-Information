@@ -21,24 +21,32 @@ The system requirement for running this project:
 - npm / yarn
 
 ## Running this project locally
-1. ### Prepare .env
-- Create .env file using .env.example as a template
-  - PORT : server running port
-  - JWT_KEY : JWT secret key
-  - NEWSAPI_KEY : NewsAPI provider api key
-2. ### Using npm :
-- Clone this repo
-- Install dependencies with console
-  - Using npm ```npm install```
-  - OR
-  - Using yarn if installed ```yarn install```
-- Using console start the server
-  - ``` node server.js ```
-  - OR
-  - if computer installed with nodemon ``` npm start ```
-  - OR
-  - if computer installed with nodemon ``` yarn start ```
-- (optional) ```npm i -g nodemon ```
+1. ### Using Docker :
+```
+  docker run -p 3000:3000 \
+  -e NEWSAPI_KEY={NEWS_API_KEY} \
+  kaye5/covid19-restapi-information
+```
+2. ### OR Using NPM Manually
+  - ### Prepare .env
+    - Create .env file using .env.example as a template
+      - PORT : server running port
+      - JWT_KEY : JWT secret key
+      - NEWSAPI_KEY : NewsAPI provider api key
+
+  - ### Using npm :
+    - Clone this repo
+    - Install dependencies with console
+      - Using npm ```npm install```
+      - OR
+      - Using yarn if installed ```yarn install```
+    - Using console start the server
+      - ``` node server.js ```
+      - OR
+      - if computer installed with nodemon ``` npm start ```
+      - OR
+      - if computer installed with nodemon ``` yarn start ```
+    - (optional) ```npm i -g nodemon ```
 
 ## Aditional Information
 - For getting access key use /login endpoint with request body ```{"user" : "anything"}``` since there's no active authentication here.

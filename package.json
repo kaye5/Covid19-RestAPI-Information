@@ -6,7 +6,7 @@
     "email": "kevinyusyus@gmail.com"
   },
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "main": "index.js",
   "license": "MIT",

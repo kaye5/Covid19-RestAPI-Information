@@ -66,9 +66,6 @@ Token can be get from ```/login``` endpoint. Which the token will be send to ser
             }
 
     + Attributes (object)
-        + Country (string) - Country name
-        + CountryCode (string) - Country ISO2 Code
-        + Slug (string) - Country slug id
         + NewConfirmed (number) - New covid-19 cases
         + TotalConfirmed (number) - Total confirmed covid-19 cases
         + NewDeaths (number) - New covid-19 death cases
@@ -203,7 +200,7 @@ Token can be get from ```/login``` endpoint. Which the token will be send to ser
                         "content": "KONTAN.CO.ID - JAKARTA. Agar tubuh tidak mudah terserang penyakit kronis, kita dapat melakukan satu kegiatan ini. Olahraga.  \r\nMalah penelitian baru menunjukkan, menjadi aktif secara fisik dapat meng… [+1720 chars]"
                     }
                 ],
-                "totalResults": 3
+                "totalResults": 1
             }
 
     + Attributes (object)
@@ -277,19 +274,19 @@ Error response when credentials provided on login not match
     }
     ```
 ## **Attributes**
-```js
+```
   {
-    message : {
-        type : "string",
+    "message" : {
+        "type" : "string",
         "description": "message or description error response"
     },
-    code : {
-        type : "string",
-        description: "Error code",
+    "code" : {
+        "type" : "string",
+        "description": "Error code",
     },
-    type : {
-        type: "string"
-        description: "Response type enum [error,warn,info]"
+    "type" : {
+        "type": "string"
+        "description": "Response type enum [error,warn,info]"
     }
   }
 ```
